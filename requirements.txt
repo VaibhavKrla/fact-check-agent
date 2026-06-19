@@ -1,0 +1,15 @@
+# Phase 0
+streamlit>=1.38,<2.0
+
+# Phase 1 -- PDF parsing + resilient HTTP client for Mistral/Tavily calls
+pdfplumber>=0.11,<0.12
+requests>=2.32,<3.0
+
+# Phase 4 -- results table + CSV export in the UI
+# (already a transitive dependency of streamlit, declared explicitly
+# since app.py imports it directly)
+pandas>=2.0,<4.0
+
+# Mistral client (Phase 2) and tavily-python (Phase 3) are intentionally
+# not added -- core/api_clients.py calls both APIs directly over HTTP
+# via `requests`, so no extra SDK dependency is needed for either.

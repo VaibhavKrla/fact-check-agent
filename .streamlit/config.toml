@@ -1,0 +1,9 @@
+# Streamlit configuration. Read automatically both locally and on
+# Streamlit Community Cloud -- no separate deployment-only config needed.
+
+[server]
+# Bounds worst-case upload size before parsing even starts. Paired with
+# core/pdf_parser.py's MAX_PAGES=30 cap: a 30-page text PDF is typically a
+# few MB, so 25MB leaves generous headroom for image-heavy PDFs while still
+# protecting the free-tier Mistral/Tavily budget from a pathological upload.
+maxUploadSize = 25
