@@ -1,8 +1,7 @@
 # Fact-Check Agent
 
 Upload a PDF, extract its factual claims, and verify them against live web
-data. Built for the CogCulture Product Management Trainee assessment
-(Part 2: Fact-Checking Web Application).
+data using AI models and web search integration.
 
 > **Status: complete.** All seven phases are done — parsing, extraction,
 > verification, UI, adversarial testing, and deployment are implemented
@@ -66,7 +65,7 @@ Pipeline, in one line: **PDF → parse (pdfplumber) → extract claims
    - **False** — no supporting evidence was found, or it's directly
      refuted. (See the limitations section — "no evidence found" and
      "actively refuted" are deliberately not distinguished in this
-     3-way rubric, since the assessment only asked for three categories.)
+     3-way rubric to keep the interface simple and focused.)
 5. Click **Download report as CSV** to export.
 6. Try `sample_docs/test_trap_doc.pdf` first — it plants known-false
    stats, a claim repeated 3 times verbatim, a simulated scanned page,
@@ -108,9 +107,8 @@ Documented honestly, not hidden:
 - **3-way verdict rubric is a simplification.** "False" covers both
   "actively refuted by evidence" and "no evidence found at all" — these
   are mechanically different paths internally (the latter skips the
-  judge call entirely) but the assessment's required output is a 3-way
-  rubric, so both surface as "False" with an explanation that
-  distinguishes them in the text.
+  judge call entirely) but both surface as "False" with an explanation that
+  distinguishes them in the text to keep the frontend simple and straightforward.
 - **Scanned-document detection is a heuristic, not OCR.** It flags a PDF
   as likely-scanned when extracted text per page falls below a
   threshold. It does not attempt to OCR the page — a scanned PDF will
@@ -137,11 +135,9 @@ Documented honestly, not hidden:
   `api.tavily.com`). Run `sample_docs/test_trap_doc.pdf` with your real
   keys before fully trusting the verdicts.
 
-## Demo video
+## Demo walkthrough
 
-A 30-second screen recording showing the real deployed app is part of
-the submission deliverables. Record it yourself against your live URL —
-here's a tight shot list that fits in 30 seconds:
+A 30-second screen recording can be used to showcase the app on your portfolio or in job applications. Here's a suggested walkthrough flow that fits in 30 seconds:
 
 | Time | Action |
 |---|---|
@@ -188,14 +184,4 @@ fact-check-agent/
 - [x] Phase 4 -- UI integration, end-to-end flow
 - [x] Phase 5 -- adversarial testing
 - [x] Phase 6 -- deployment (Streamlit Community Cloud)
-- [x] Phase 7 -- packaging (this README, demo video script)
-
-## Submission checklist
-
-This repo covers Part 2 of the assessment. Don't forget the rest of the
-submission package:
-
-- [ ] PPT deck (Part 1: feature design, competitive analysis, monetization roadmap)
-- [ ] Deployed app link (Phase 6 — needs your GitHub + Streamlit Cloud account)
-- [ ] GitHub repository with `requirements.txt` and `README.md` (this repo — both present)
-- [ ] 30-second demo video (script above — needs your screen recording)
+- [x] Phase 7 -- packaging and documentation
